@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+
+\usepackage{lipsum}
+\usepackage{pgf-umlsd}
+\usepackage[simplified]{pgf-umlcd}
+\usepackage{float}
+\usepackage{vhistory}
+\usepackage{hyperref}
+\usepackage{acro}
+\usepackage{parskip}
+
+\author{Tomislav Radanović, Rato Kuzmanić}
+\title{Raccu Protocol Specification}
+\date{\today}
+
+\DeclareAcronym{sts}{
+  short = STS,
+  long  = secure token service,
+  class = abbrev
+}
+
+\DeclareAcronym{ctap}{
+  short = CTAP,
+  long  = Client-to-Authenticator Protocol,
+  class = abbrev
+}
+
+\begin{document}
+    \begin{titlepage}
+        \clearpage\maketitle
+        \vfill
+        \thispagestyle{empty}
+    \end{titlepage}
+
+    \clearpage\tableofcontents
+    \thispagestyle{empty}
+    \setcounter{page}{0}
+    \newpage
+
+    \input{chapters/introduction.tex}
+    \newpage
+
+    \input{chapters/definitions.tex}
+    \newpage
+
+    \input{chapters/register.tex}
+    \newpage
+
+    \section{Login}
+    \lipsum[1]
+    \subsection{Sequenced diagram}
+    \begin{figure}[H]
+        \centering
+        \begin{sequencediagram}
+            
+            \newinst{A}{Mobile}{}
+            \newinst[2]{B}{Web}{}
+            \newinst[2]{C}{Auth}{}
+            \newinst[2]{D}{Server}{}
+
+            \tiny
+            \begin{call}{B}{GET /resource/limited/1}{D}{401 Unauthorized}\end{call}{C}
+            \begin{call}{B}{GET /auth}{C}{200 OK {(challenge)}}\end{call}{B}
+            \mess{B}{QR{(challenge, domain)}}{A}
+            \begin{call}{A}{POST /token {(challenge, email, domain, Sign{(...)})}}{C}{200 OK}\end{call}{A}
+            \mess{C}{Confirmation successful}{B}
+            \begin{call}{B}{GET /token/\{challenge\}}{C}{200 OK {(token)}}\end{call}{B}
+            \begin{call}{B}{POST /login {(token)}}{D}{200 OK {(JWT, session cookie, ...)}}\end{call}{B}
+
+        \end{sequencediagram}
+        \caption{Login protocol flow}
+    \end{figure}
+    \subsection{Token}
+    \lipsum[1]
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \begin{class}[fill=white, drop shadow, draw=black]{Auth provider token}{0 ,0}
+                \attribute{user-email : string}
+                \attribute{user-name : string}
+                \attribute{issued-at : timestamp}
+                \attribute{target-domain : string}
+                \attribute{issuer : string}
+                \attribute{signature : hex}
+            \end{class}
+        \end{tikzpicture}
+        \caption{Fields included into authentication token}
+    \end{figure}
+
+    \newpage
+
+    \section{Reset creditentials}
+    \lipsum[1]
+    \subsection{Sequenced diagram}
+    \begin{figure}[H]
+        \centering
+        \begin{sequencediagram}
+
+            \newinst{A}{Email}{}
+            \newinst[3]{B}{Mobile}{}
+            \newinst[3]{C}{Auth}{}
+
+            \tiny
+            \begin{call}{B}{POST /reset {(email)}}{C}{200 OK}\end{call}{B}
+            \mess{C}{Email{(code)}}{A}
+            \mess{A}{code}{B}
+            \begin{call}{B}{POST /reset/verify {(email, code)}}{C}{200 OK {(reset token)}}\end{call}{B}
+            \begin{call}{B}{POST /reset/\{reset token\} {(reset token, PUk, Sign(...))}}{C}{200 OK}\end{call}{B}
+
+        \end{sequencediagram}
+        \caption{Reset creditentials protocol flow}
+    \end{figure}
+    \newpage
+
+    \section{Delete account}
+    \lipsum[1]
+    \subsection{Sequenced diagram}
+    \begin{figure}[H]
+        \centering
+        \begin{sequencediagram}
+
+            \newinst{A}{Mobile}{}
+            \newinst[5]{C}{Auth}{}
+
+            \tiny
+            \begin{call}{A}{DELETE / {(email, Sign{(...)})}}{C}{200 OK}\end{call}{A}
+            
+        \end{sequencediagram}
+        \caption{Delete account protocol flow}
+    \end{figure}
+    \newpage
+
+    \listoffigures\bigskip
+    \printacronyms[include-classes=abbrev,name=Abbreviations]
+    \begin{versionhistory}
+        \vhEntry{0.0.0}{13.10.2018.}{Radanović}{Created document structure}
+        \vhEntry{0.1.0}{18.10.2018.}{Radanović}{Added sequenced diagrams}
+        \vhEntry{0.1.1}{23.10.2018.}{Radanović}{Updated sequenced diagrams}
+        \vhEntry{0.2.0}{24.10.2018.}{Kuzmanić}{Added about project}
+        \vhEntry{0.3.0}{25.10.2018.}{Kuzmanić}{Added introduction and definitions}
+        \vhEntry{0.4.0}{25.10.2018.}{Kuzmanić}{Added registration via email}
+    \end{versionhistory}
+    
+\end{document}

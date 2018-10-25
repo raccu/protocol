@@ -1,0 +1,36 @@
+\section{Introduction}
+This specification provides a formal, high-level overview of the Raccu protocol. 
+
+    \subsection{Background}
+    Raccu is a centralized \ac{sts} protocol for public-key cryptography authentication based on a 
+    smartphone biometry. The protocol is architecturally inspired by the likes of OAuth 2.0, OpenID, 
+    and W3C's WebAuthn while it conceptually resembles FIDO Alliance's \ac{ctap}, namely FIDO UAF standards. 
+
+    \subsection{Goals}
+    The core vision of Raccu is to provide a uniform method of authentication with the following properties: 
+        \begin{enumerate}
+            \item Smaller complexity and lesser cognitive load than in a traditional email and password 
+                  authentication systems.
+            \item Single registration process for authenticating to multiple web services and applications.
+            \item Authentication process for issuing an attestation is independent of the type of registration 
+                  used to create an account.
+            \item Preserving data and origin integrity of the attestation through PKI based chain of trust.
+            \item Requiring user's consent via independent biometric authorization process before granting an 
+                  attestation.
+        \end{enumerate}
+    In the current version of the protocol, only an email-based registration is described in details, although 
+    other types of registrations and verification claims can be easily added if needed.
+
+    \subsection{Disclaimer}
+    Implementation of certain elements of this specification may require licenses under third party intellectual 
+    property rights, including without limitation, patent rights. The authors and any other contributors to this 
+    specification are not, and shall not be held, responsible in any manner for identifying or failing to identify 
+    any or all such third party intellectual property rights.    
+    
+    \medskip
+    THIS SPECIFICATION IS PROVIDED “AS IS” AND WITHOUT ANY WARRANTY OF ANY KIND, INCLUDING, WITHOUT LIMITATION,
+    ANY EXPRESS OR IMPLIED WARRANTY OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+    \subsection{Contributing}
+    Anyone can contribute to the protocol or to its specification. To learn more about contributing, please visit our 
+    official repository on GitHub located at \href{https://www.github.com/Raccu/Documentation}{https://www.github.com/Raccu/Documentation}.
