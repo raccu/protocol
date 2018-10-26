@@ -1,0 +1,16 @@
+\section{Delete account}
+\lipsum[1]
+    \subsection{Sequenced diagram}
+        \begin{figure}[H]
+            \centering
+            \begin{sequencediagram}
+
+                \newinst{A}{Mobile}{}
+                \newinst[5]{C}{Auth}{}
+
+                \tiny
+                \begin{call}{A}{DELETE / {(email, Sign{(...)})}}{C}{200 OK}\end{call}{A}
+                
+            \end{sequencediagram}
+            \caption{Delete account protocol flow}
+        \end{figure}
