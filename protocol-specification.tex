@@ -35,7 +35,12 @@
     \input{chapters/reset-credentials.tex} \newpage
     \input{chapters/delete-account.tex} \newpage
 
+    \addcontentsline{toc}{section}{\listfigurename}
     \listoffigures
+
+    \addcontentsline{toc}{section}{Abbreviations}
     \printacronyms[include-classes=abbrev,name=Abbreviations]
+
+    \addcontentsline{toc}{section}{Revision History}
     \input{meta/version-history.tex}
 \end{document}
