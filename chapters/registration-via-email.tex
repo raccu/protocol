@@ -1,16 +1,16 @@
-\section{Register via email}
+\section{Register via Email}
 
     \subsection{Flow}
-    The flow of registering an account via email (i.e. use an email validation claim) is defined as follows:
+    The flow of registering an account via email (i.e. using an email verification claim) is defined as follows:
         \begin{enumerate}
             \item A user MUST provide a valid name and a valid email.
             \item When Auth receives a valid registration request, it MUST dispatch an email with a verification 
                   code to the provided email.
-            \item Upon receiving the verification code and entering it into the Mobile, a Mobile MUST provide a 
-                  method to generate, store, and retrieve public key and an interface for signing an arbitrary 
-                  message with a matching private key.
+            \item Upon receiving the verification code and entering it into the Mobile, the Mobile MUST provide 
+                  a method to generate, store, and retrieve public key and an interface for signing an arbitrary 
+                  message with the matching private key.
             \item Mobile MUST finish an account creation by submitting a name, email, generated public key, and 
-                  a digital signature of all of the previous parameters, with the REQUIRED addition of the 
+                  a digital signature of all of the previous parameters, with a REQUIRED addition of the 
                   verification code, to the Auth.
         \end{enumerate}
 
@@ -29,7 +29,8 @@
                             just as well as a limited lifetime in order to reduce the likelihood of a 
                             successful brute-force attack.
 
-            \item Verification code MUST NOT be revealed to third parties or sent over the network.\\        
+            \item Verification code MUST NOT be revealed to third parties or sent over the network, except when
+                  it's sent to the Email by Auth.\\        
             \textit{Argument:} Verification code represents a shared secret between the entities and revealing 
                             it to other parties or sending it over a (potentially insecure) network poses 
                             a confidentiality breach risk. 
@@ -59,3 +60,23 @@
                             public channel would pose a privacy concern, as well as create new vectors of attack, 
                             namely social engineering, phishing, and targeted brute-force attacks.
         \end{enumerate}
+    
+    \subsection{Expected outcomes}
+        \subsubsection{Successful registration}
+        If the registration via email is successful, the Mobile MUST remember user's name, email, public key, and 
+        have access to the procedure that signs an arbitrary message with the matching private key. The Auth MUST 
+        remember user's name, email, and public key.
+
+        \subsubsection{Unsuccessful registration}
+        If the registration via email fails for any reason related to the semantics of the protocol, an attempt to
+        register MUST be discarded and all of the related data should be deleted. It is RECOMMENDED to log an attempt
+        in order to screen a source of multiple invalid requests. Any of the following reasons is considered to be
+        a semantic of the protocol:
+            \begin{itemize}
+                \item Email is already associated with another account.
+                \item Verification code entered into Mobile does not match an expected verification code.
+                \item The signature cannot be verified with a given public key.
+                \item The signature is invalid.
+            \end{itemize}
+        If the registration fails for any other reason (e.g. network outage), an appropriate message SHOULD be
+        dispatched or left to the other protocols for handling, should they offer such capability.
