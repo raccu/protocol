@@ -1,0 +1,21 @@
+\begin{figure}[H]
+    \centering
+    \begin{sequencediagram}
+        
+        \newinst{A}{Mobile}{}
+        \newinst[2]{B}{Web}{}
+        \newinst[2]{C}{Auth}{}
+        \newinst[2]{D}{Server}{}
+
+        \tiny
+        \begin{call}{B}{GET /resource/limited/1}{D}{401 Unauthorized}\end{call}{C}
+        \begin{call}{B}{GET /auth}{C}{200 OK {(challenge)}}\end{call}{B}
+        \mess{B}{QR{(challenge, domain)}}{A}
+        \begin{call}{A}{POST /token {(challenge, email, domain, Sign{(...)})}}{C}{200 OK}\end{call}{A}
+        \mess{C}{Confirmation successful}{B}
+        \begin{call}{B}{GET /token/\{challenge\}}{C}{200 OK {(token)}}\end{call}{B}
+        \begin{call}{B}{POST /login {(token)}}{D}{200 OK {(JWT, session cookie, ...)}}\end{call}{B}
+
+    \end{sequencediagram}
+    \caption{Login protocol flow}
+\end{figure}
