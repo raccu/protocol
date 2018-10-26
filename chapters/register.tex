@@ -7,7 +7,7 @@
             \item When Auth receives a valid registration request, it MUST dispatch an email with a verification 
                   code to the provided email.
             \item Upon receiving the verification code and entering it into the Mobile, a Mobile MUST provide a 
-                  method to generate, store, and retreive public key and an interface for signing an arbitrary 
+                  method to generate, store, and retrieve public key and an interface for signing an arbitrary 
                   message with a matching private key.
             \item Mobile MUST finish an account creation by submitting a name, email, generated public key, and 
                   a digital signature of all of the previous parameters, with the REQUIRED addition of the 
@@ -70,7 +70,7 @@
             \item The communication between a Mobile and Auth MUST rely on a secure channel that provides 
                 confidentiality and verifies integrity. It is RECOMMENDED to use up-to-date version of 
                 Transport Level Security (TLS) protocol with a well-tested and computationally secure 
-                ciphersuite.\\      
+                cipher suite.\\      
             \textit{Argument:} Mobile and Auth exchange user's personal information and transmitting them over a 
                             public channel would pose a privacy concern, as well as create new vectors of attack, 
                             namely social engineering, phishing, and targeted brute-force attacks.
