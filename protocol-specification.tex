@@ -17,36 +17,25 @@
 
 \begin{document}
     \begin{titlepage}
-        \clearpage\maketitle
+        \maketitle
         \vfill
         \thispagestyle{empty}
     \end{titlepage}
 
-    \clearpage\tableofcontents
+    \tableofcontents
     \thispagestyle{empty}
-    \setcounter{page}{0}
     \newpage
+    
+    \setcounter{page}{1}
 
-    \input{chapters/introduction.tex}
-    \newpage
-
-    \input{chapters/definitions.tex}
-    \newpage
-
-    \input{chapters/registration-via-email.tex}
-    \newpage
-
-    \input{chapters/login.tex}
-    \newpage
-
-    \input{chapters/reset-credentials.tex}
-    \newpage
-
-    \input{chapters/delete-account.tex}
-    \newpage
+    \input{chapters/introduction.tex} \newpage
+    \input{chapters/definitions.tex} \newpage
+    \input{chapters/registration-via-email.tex} \newpage
+    \input{chapters/login.tex} \newpage
+    \input{chapters/reset-credentials.tex} \newpage
+    \input{chapters/delete-account.tex} \newpage
 
     \listoffigures
-    \medskip
     \printacronyms[include-classes=abbrev,name=Abbreviations]
     \input{meta/version-history.tex}
 \end{document}
