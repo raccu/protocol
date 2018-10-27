@@ -20,11 +20,61 @@ issued attestation, as well as the process of authenticating the user by the Aut
                   reference to the authentication session.
             \item Web MUST submit the attestation to the Server as a proof of user's identity, and thus finishing the
                   authentication flow.
+            \item Server MAY issue a new authentication and authorization token to the Web.
         \end{enumerate}
 
     The flow is shown in a following sequence diagram: 
         \input{diagrams/sequence/login.tex}
-    
+
+    \subsection{Requirements}
+    The following requirements are made for a login:
+        \begin{enumerate}
+            \item Provided email MUST exist in the Auth's store.\\
+            \textit{Argument:} It is trivial that the Auth cannot authenticate a user it does not have any record
+                               of.            
+
+            \item A challenge that the Auth generates MUST rely on a cryptographically secure pseudo-random number 
+                  generator (CSPRNG) and MUST NOT be predictable. The challenge SHALL NOT be reused.\\
+            \textit{Argument:} If the challenge can be predicted or guessed, an unauthorized party might fetch the
+                               attestation or perform Man-in-the-Middle (MITM) attack. On the other hand, if the
+                               challenge is reused, the system becomes susceptible to the replay attack. Due to that, 
+                               the challenge should be understood as a nonce.
+
+            \item Mobile MUST NOT expose private key directly.\\
+            \textit{Argument:} Since the digital signature is a basis of authentication, an utmost respect to 
+                               protecting the confidentiality of the private key should be implemented.
+
+            \item Mobile MUST always require a biometric authentication to allow access to digital signing 
+                  capability.\\        
+            \textit{Argument:} This is to avoid phishing attacks or other illegal attempts to get the user's 
+                               digital signature without his/hers explicit approval.
+
+            \item When a user is prompted to authenticate a scanned QR code, the Mobile MUST disclose the domain that 
+                  requires the authentication and is located inside the code itself.\\
+            \textit{Argument:} This is to stop phishing attacks and also provide the feed-forward to the user.
+
+            \item An attestation SHOULD NOT be permanently stored on the Web or the Server but rather deleted once its 
+                  validity has been proved and the process of login is finished. It is RECOMMENDED to handle the 
+                  attestation with an utmost care for its confidentiality.\\
+            \textit{Argument:} Since the attestation proves the holder's identity, an attacker that obtains a valid
+                               attestation might pose as the user identified by the attestation.
+
+            \item An attestation MUST be checked for the time of issuing and \textit{old} attestations MUST NOT be
+                  accepted. It is left up to the implementer to define \textit{old}, but it is RECOMMENDED to
+                  decline an attestation that was issued over three minutes ago.\\
+            \textit{Argument:} Since the attestation proves the holder's identity, an attacker that obtains a valid
+                               attestation might pose as the user identified by the attestation. Given that the login
+                               flow is not particularly long or dependant upon data entry, a three minute time-to-live 
+                               (TTL) period is gracious enough to let the network exchanges happen.
+
+            \item The communication between the Web and Auth, the Mobile and Auth, and the Web and Server MUST rely on 
+                  a secure channel that provides confidentiality and verifies integrity. It is RECOMMENDED to use 
+                  up-to-date version of TLS protocol with a well-tested and computationally secure cipher suite.\\      
+            \textit{Argument:} The exchanged information should remain confidential given that the challenge is used to
+                               identify an authentication session, and later on an attestation is used to authenticate the
+                               user.
+        \end{enumerate}
+
     \subsection{Token}
     \lipsum[1]
         \begin{figure}[H]
