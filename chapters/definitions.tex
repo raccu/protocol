@@ -3,13 +3,13 @@ Throughout the specification a following list of terms is widely used. In this s
 and what assumptions do we make on them.
 
 \medskip
-\textbf{Attestation}: Digitally signed claim in a form of a token that confirms holder's identity. Issued by 
-an Auth instance in a format defined in this specification and a separate Raccu Auth Provider API Specification. 
-A secure storing of the attestation by its holder is implied.
-
-\medskip
 \textbf{Email}: User's email client that allows him to gain read access rights on the email address he/she 
 provided. We assume that the user is the only person with the access to this entity.
+
+\medskip
+\textbf{Auth}: Central authentication provider that serves as a secure token store (STS) and conforms to 
+this specification and a separate Raccu Auth Provider API Specification. Valid and trusted certificate 
+issued as a part of PKI for this entity is implied.
 
 \medskip
 \textbf{Mobile}: A mobile application developed according to this specification and a separate Raccu Mobile 
@@ -21,9 +21,9 @@ reader and an enabled biometric authentication on the host smartphone is implied
 as specified by this specification and a separate Raccu Client Component Specification.
 
 \medskip
-\textbf{Auth}: Central authentication provider that serves as a secure token store (STS) and conforms to 
-this specification and a separate Raccu Auth Provider API Specification. Valid and trusted certificate 
-issued as a part of PKI for this entity is implied.
+\textbf{Attestation}: Digitally signed claim in a form of a token that confirms holder's identity. Issued by 
+an Auth instance in a format defined in this specification and a separate Raccu Auth Provider API Specification. 
+A secure storing of the attestation by its holder is implied.
 
 \medskip
 \textbf{Server}: An end web service or application that consumes an attestation issued by an Auth instance. 
