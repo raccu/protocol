@@ -3,18 +3,19 @@ Throughout the specification a following list of terms is widely used. In this s
 and what assumptions do we make on them.
 
 \medskip
-\textbf{Email}: User's email client that allows him to gain read access rights on the email address he/she 
-provided. We assume that the user is the only person with the access to this entity.
+\textbf{Email}: Email client that allows the user to gain read access rights to the inbox associated
+with the email address he/she provided. It is assumed that the user is the only person with the read access 
+to this entity.
 
 \medskip
 \textbf{Auth}: Central authentication provider that serves as a secure token store (STS) and conforms to 
-this specification and a separate Raccu Auth Provider API Specification. Valid and trusted certificate 
-issued as a part of PKI for this entity is implied.
+the Raccu Auth Provider API Specification. Valid and trusted certificate issued from the certificate authority (CA)
+as a part of public key infrastructure (PKI) for this entity is implied.
 
 \medskip
-\textbf{Mobile}: A mobile application developed according to this specification and a separate Raccu Mobile 
-Application Specification that communicates with the corresponding Auth instance. Access to the fingerprint 
-reader and an enabled biometric authentication on the host smartphone is implied.
+\textbf{Mobile}: A mobile application implementation conforming to the Raccu Mobile Application Specification 
+that communicates with the corresponding Auth instance. Access to the fingerprint reader and an enabled biometric 
+authentication on the host smartphone is implied.
 
 \medskip
 \textbf{Web}: A client-side component in charge of rendering QR codes and dispatching appropriate messages 
