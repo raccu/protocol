@@ -6,7 +6,8 @@
         \newinst[5]{C}{Auth}{}
 
         \tiny
-        \begin{call}{A}{DELETE / {(email, Sign{(...)})}}{C}{200 OK}\end{call}{A}
+        \begin{call}{A}{GET /delete }{C}{200 OK (delete token)}\end{call}{A}
+        \begin{call}{A}{DELETE / {(delete token, email, Sign{(delete token \textbar\textbar email)})}}{C}{200 OK}\end{call}{A}
         
     \end{sequencediagram}
     \caption{Delete account protocol flow}
