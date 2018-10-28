@@ -21,7 +21,8 @@ issued attestation, as well as the process of authenticating the user by the Aut
                   as a reference to the authentication session.
             \item Browser MUST submit the attestation to the Server as a proof of user's identity, and thus finishing 
                   the authentication flow.
-            \item Server MAY issue a new authentication and authorization token to the Browser.
+            \item Server SHOULD issue a new authentication and authorization token to the Browser in order to complete
+                  the login process.
         \end{enumerate}
 
         \input{diagrams/sequence/login.tex}
