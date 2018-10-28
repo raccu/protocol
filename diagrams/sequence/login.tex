@@ -9,7 +9,7 @@
 
         \tiny
         \begin{call}{B}{GET /protected/resource/1}{D}{401 Unauthorized}\end{call}{C}
-        \begin{call}{B}{GET /auth}{C}{200 OK {(challenge)}}\end{call}{B}
+        \begin{call}{B}{GET /auth}{C}{200 OK {(challenge, domain)}}\end{call}{B}
         \mess{B}{QR{(challenge, domain)}}{A}
         \begin{call}{A}{POST /attestation {(challenge, email, domain, Sign{(challenge \textbar\textbar email \textbar\textbar domain)})}}{C}{200 OK}\end{call}{A}
         \mess{C}{Authentication successful}{B}
