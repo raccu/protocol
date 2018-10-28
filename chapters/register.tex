@@ -63,21 +63,21 @@ other types of verification claims can be easily added, if needed.
                                 namely social engineering, phishing, and targeted brute-force attacks.
             \end{enumerate}
         
-    \subsection{Successful registration}
-    If the registration via email is successful, the Mobile MUST remember user's name, email, public key, and 
-    have access to the procedure that signs an arbitrary message with the matching private key. The Auth MUST 
-    remember user's name, email, and public key.
+        \subsubsection{Successful registration}
+        If the registration via email is successful, the Mobile MUST remember user's name, email, public key, and 
+        have access to the procedure that signs an arbitrary message with the matching private key. The Auth MUST 
+        remember user's name, email, and public key.
 
-    \subsection{Unsuccessful registration}
-    If the registration via email fails for any reason related to the semantics of the protocol, an attempt to
-    register MUST be discarded and all of the related data should be deleted. It is RECOMMENDED to log an attempt
-    in order to screen a source of multiple invalid requests. Any of the following reasons is considered to be
-    a semantic of the protocol:
-        \begin{itemize}
-            \item Email is already associated with another account.
-            \item Verification code entered into Mobile does not match an expected verification code.
-            \item The signature cannot be verified with a given public key.
-            \item The signature is invalid.
-        \end{itemize}
-    If the registration fails for any other reason (e.g. network outage), an appropriate message SHOULD be
-    dispatched or left to the other protocols for handling, should they offer such capability.
+        \subsubsection{Unsuccessful registration}
+        If the registration via email fails for any reason related to the semantics of the protocol, an attempt to
+        register MUST be discarded and all of the related data should be deleted. It is RECOMMENDED to log an attempt
+        in order to screen a source of multiple invalid requests. Any of the following reasons is considered to be
+        a semantic of the protocol:
+            \begin{itemize}
+                \item Email is already associated with another account.
+                \item Verification code entered into Mobile does not match an expected verification code.
+                \item The signature cannot be verified with a given public key.
+                \item The signature is invalid.
+            \end{itemize}
+        If the registration fails for any other reason (e.g. network outage), an appropriate message SHOULD be
+        dispatched or left to the other protocols for handling, should they offer such capability.
