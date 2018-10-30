@@ -2,13 +2,17 @@
     \centering
     \begin{sequencediagram}
 
-        \newinst{A}{Mobile}{}
-        \newinst[5]{C}{Auth}{}
-
-        \tiny
-        \begin{call}{A}{GET /delete }{C}{200 OK (delete token)}\end{call}{A}
-        \begin{call}{A}{DELETE / {(delete token, email, Sign{(delete token \textbar\textbar email)})}}{C}{200 OK}\end{call}{A}
+        \newinst{A}{Email}{}
+        \newinst[3]{B}{Mobile}{}
+        \newinst[3]{C}{Auth}{}
         
+        \tiny
+        \begin{call}{B}{POST /delete {(email)}}{C}{200 OK}\end{call}{B}
+        \mess{C}{Send an email {(verification code)}}{A}
+        \mess{A}{verification code}{B}
+        \begin{call}{B}{DELETE / {(email, Sign{(email \textbar\textbar verification code)})}}{C}{200 OK}\end{call}{B}
+
     \end{sequencediagram}
-    \caption{Delete account protocol flow}
+    \caption{Register via email protocol flow}
+    \label{fig:deleteAccount}
 \end{figure}
