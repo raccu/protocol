@@ -1,13 +1,13 @@
 \section{Login}
-In this section a flow for logging in at an independent endpoint using an Auth issued attestation, as well as the 
+In this section a flow for logging in at an independent endpoint using the Auth issued attestation, as well as the 
 process of authenticating the user by the Auth is defined. 
 
     \subsection{Flow}
-    The login flow is given in Figure ~\ref{fig:login} and defined as follows:
+    The login flow is given in Figure~\ref{fig:login} on page~\pageref{fig:login} and defined as follows:
         \begin{enumerate}
             \item A user MAY try to access an unauthorized resource on the Server via the Browser.
-            \item Server MUST notify the user that he/she needs to authenticate and SHALL refer the Auth he/she 
-                  can use to do so.
+            \item Server MUST notify the user that they need to authenticate and SHALL refer the Auth they can use 
+                  to do so.
             \item Upon receiving the information about the Auth, the Browser MUST fetch an authentication challenge
                   from the Auth. It is REQUIRED for the challenge to be combined with the domain name and
                   displayed as a QR code for the user to scan it with the Mobile.
@@ -27,8 +27,8 @@ process of authenticating the user by the Auth is defined.
         \input{diagrams/sequence/login.tex}
 
     \subsection{Attestation structure}
-    An attestation that Auth issues to the user upon authenticating has a structure defined in a Figure 
-    ~\ref{fig:attestation}.
+    An attestation that Auth issues to the user upon authenticating has a structure defined in a Figure~\ref{fig:attestation}
+    on page~\pageref{fig:attestation}.
     \input{diagrams/attestation.tex}
     Within the structure, a \textit{version} represents a version of the protocol under which an attestation was issued, 
     while \textit{iat} stands for \textit{issued at} and represents a moment at which an attestation was issued. The 
@@ -42,7 +42,8 @@ process of authenticating the user by the Auth is defined.
     \subsection{Successful login}
     If the login is successful, the Server SHOULD communicate with the Browser in a manner of its implementation. Both 
     authentication and authorization from that point forward to the session expiry, as defined by the Server, MUST be 
-    within the Server's scope.
+    within the Server's scope. The attestation used to initially authenticate the user MUST be deleted by both the Browser
+    and the Server.
 
     \subsection{Unsuccessful login}
     If the login fails for any reason related to the authentication as described by the protocol, an attempt to 
