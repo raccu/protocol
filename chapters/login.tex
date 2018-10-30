@@ -12,9 +12,9 @@ process of authenticating the user by the Auth is defined.
                   from the Auth. It is REQUIRED for the challenge to be combined with the domain name and
                   displayed as a QR code for the user to scan it with the Mobile.
             \item When the user scans an aforementioned QR code with the Mobile, the Mobile MUST authenticate the 
-                  user locally by using a built-in biometry. Upon authenticating, the Mobile will sign the 
-                  challenge, domain name, and user's email. Afterwards, the Mobile MUST send the challenge and user's
-                  email alongside the signature to the Auth.
+                  user locally by using a built-in biometry while disclosing the domain that requires the authentication.
+                  Upon authenticating, the Mobile will sign the challenge, domain name, and user's email. Afterwards, the
+                  Mobile MUST send the challenge and user's email alongside the signature to the Auth.
             \item Auth SHOULD notify the Browser that the authentication is successful and that the attestation is
                   ready.
             \item Browser MUST request the attestation from the Auth by providing a challenge that the Auth issued 
