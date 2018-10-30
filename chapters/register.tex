@@ -28,12 +28,12 @@ other flows are required to obtain user's name and email address in addition to 
             \subsubsection{Unsuccessful registration}
             If the registration via email fails for any reason related to the semantics of the protocol, an attempt to
             register MUST be discarded and all of the related data should be deleted. It is RECOMMENDED to log an attempt
-            in order to screen a source of multiple invalid requests. Any of the following reasons is considered to be
+            in order to screen a source of multiple invalid requests. All of the following reasons are considered to be
             a semantic of the protocol:
             \begin{itemize}
                   \item Email is already associated with another account.
                   \item Verification code entered into Mobile does not match the expected verification code.
-                  \item The signature cannot be verified with a given public key.
+                  \item The signature cannot be verified by a given public key.
                   \item The signature is invalid.
             \end{itemize}
             If the registration fails for any other reason (e.g. network outage), an appropriate message SHOULD be
