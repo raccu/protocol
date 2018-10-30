@@ -1,102 +1,91 @@
 \section{Requirements}
-In this section, a list of requirements and arguments for their inclusion is given, as well as a list of flows 
-that depend upon implementation of each requirement:
+In this section, a list of requirements and arguments for their inclusion is given. Requirements are grouped into 
+semantical units based on the part of the protocol that they extend.
 
     \subsection{Verification codes and challenges}
         \begin{enumerate}
-                \item Verification code MUST be at least six characters long, contain a character space of at least ten 
-                    characters, and be short lived while it MUST NOT be predictable.\\     
+                \item Verification code MUST be at least six characters long, contain a character space of at 
+                      least ten characters, and be short lived while it SHALL NOT be predictable.\\    
                 \textit{Argument:} Verification code should posses a certain entropy and a level of randomness, 
-                                just as well as a limited lifetime in order to reduce the likelihood of a 
-                                successful brute-force attack.\\
-                \textit{Dependant flows:} Register via email, reset credentials, delete account.
+                                   just as well as a limited lifetime in order to reduce  the likelihood of a 
+                                   successful brute-force attack and Man-in-the-Middle (MITM) attack.
 
-                \item Verification code MUST NOT be revealed to third parties or sent over the network, except when
-                    it's sent to the Email by Auth.\\        
+                \item Verification code MUST NOT be revealed to third parties or sent over the network, 
+                      except when it's sent to the Email by the Auth.\\        
                 \textit{Argument:} Verification code represents a shared secret between the entities and revealing 
-                                it to other parties or sending it over a (potentially insecure) network poses 
-                                a confidentiality breach risk.\\
-                \textit{Dependant flows:} Register via email, reset credentials, delete account.
+                                   it to other parties or unnecessarily sending it over a (potentially insecure) 
+                                   network poses a confidentiality breach risk.
 
                 \item Verification code MUST be reset after a several unsuccessful verification code entries.\\        
-                \textit{Argument:} This is to reduce a chance of a successful brute-force attack.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account.
+                \textit{Argument:} This is to reduce a chance of a successful brute-force attack.
 
                 \item A challenge that the Auth generates MUST rely on a cryptographically secure pseudo-random number 
-                    generator (CSPRNG) and MUST NOT be predictable. The challenge SHALL NOT be reused.\\
+                      generator (CSPRNG) and MUST NOT be predictable.\\
                 \textit{Argument:} If the challenge can be predicted or guessed, an unauthorized party might fetch the
-                                attestation or perform an attack from Man-in-the-Middle (MITM) vector of attacks, for
-                                instance a relay attack. On the other hand, if the challenge is reused, the system 
-                                becomes susceptible to the replay attack. Due to that, the challenge should be 
-                                viewed as a nonce.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account.
+                                   attestation or perform an attack from MITM vector of attacks, for instance a relay 
+                                   attack.
+
+                \item A challenge SHALL NOT be reused.\\
+                \textit{Argument:} If the challenge is reused, the system becomes susceptible to the replay attack. 
+                                   Due to that, the challenge should be viewed as a nonce.
         \end{enumerate}
 
     \subsection{Digital signatures}
-        \begin{enumerate}
+        \begin{enumerate}[resume]
                 \item Mobile MUST NOT expose private key directly.\\
-                \textit{Argument:} Since the digital signature is a basis of authentication, an utmost respect to 
-                                protecting the confidentiality of the private key should be implemented.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account.
+                \textit{Argument:} Since the digital signature is the basis of authentication, an utmost respect to 
+                                   protecting the confidentiality of the private key should be implemented.
 
                 \item Mobile MUST always require a biometric authentication to allow access to digital signing 
-                    capability.\\        
-                \textit{Argument:} This is to avoid phishing attacks or other illegal attempts to get the user's 
-                                digital signature without his/hers explicit approval.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account.
+                      capability.\\        
+                \textit{Argument:} This is to avoid cross-site scripting (XSS) attacks or other illegal attempts to 
+                                   get the user's digital signature without their explicit approval.
 
                 \item Mobile MUST store generated keys in a trusted execution environment (TEE).\\        
                 \textit{Argument:} This is to avoid a root attack or other system-level attacks that target storage 
-                                memory or execution environment.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account.
+                                   memory or execution environment.
 
-                \item When a user is prompted to authenticate a scanned QR code, the Mobile MUST disclose the domain that 
-                    requires the authentication and is located inside the QR code itself.\\
-                \textit{Argument:} This is to stop phishing attacks and also provide the feed-forward to the user.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account.
+                \item When a user is prompted to authenticate a scanned QR code, the Mobile MUST disclose the domain
+                      that requires the authentication.\\
+                \textit{Argument:} This is to stop phishing attacks and also provide the feed-forward to the user.
         \end{enumerate}
 
-    \subsection{Attestation}
-        \begin{enumerate}
-                \item An attestation SHOULD NOT be permanently stored in the Browser or on the Server but rather deleted once
-                    its validity has been proved and the process of authentication is finished. It is RECOMMENDED to handle 
-                    the attestation with an utmost care for its confidentiality.\\
+    \subsection{Attestations}
+        \begin{enumerate}[resume]
+                \item An attestation MUST be checked for the time of issuing and \textit{old} attestations MUST NOT be
+                      accepted. It is left up to the implementer to define \textit{old}, but it is RECOMMENDED to
+                      decline an attestation that was issued over three minutes ago.\\
                 \textit{Argument:} Since the attestation proves the holder's identity, an attacker that obtains a valid
-                                attestation might pose as the user identified by the attestation.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account.  
+                                   attestation might pose as the user identified by the attestation. Given that the login
+                                   flow is not dependent upon data entry, a three minute time-to-live  (TTL) period is 
+                                   gracious enough to let the network exchanges happen.
 
                 \item An attestation MUST NOT be continuously reused after the login succeeds.\\
                 \textit{Argument:} An attestation serves as an initial proof of identity and a continuous exchange of the
-                                attestation increases the chances of its hijacking. After the initial authentication, the
-                                Server should keep track of the user's identity and his/hers permissions within the system.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account.  
+                                   attestation increases the chances of its hijacking. After the initial authentication, the
+                                   Server should keep track of the user's identity and their permissions within the system. 
 
-                \item An attestation MUST be checked for the time of issuing and \textit{old} attestations MUST NOT be
-                    accepted. It is left up to the implementer to define \textit{old}, but it is RECOMMENDED to
-                    decline an attestation that was issued over three minutes ago.\\
+                \item An attestation SHOULD NOT be permanently stored in the Browser or on the Server but rather deleted 
+                      once its validity has been proved and the process of authentication is finished. It is RECOMMENDED 
+                      to handle the attestation with an utmost care for its confidentiality.\\
                 \textit{Argument:} Since the attestation proves the holder's identity, an attacker that obtains a valid
-                                attestation might pose as the user identified by the attestation. Given that the login
-                                flow is not particularly long or dependant upon data entry, a three minute time-to-live 
-                                (TTL) period is gracious enough to let the network exchanges happen.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account. 
+                                   attestation might pose as the user identified by the attestation.
         \end{enumerate}
     
-    \subsection{Security and privacy concerns}
-        \begin{enumerate}
-                \item The communication between the Mobile and Auth MUST rely on a secure channel that provides 
-                    confidentiality and verifies integrity. It is RECOMMENDED to use up-to-date version of 
-                    Transport Level Security (TLS) protocol with a well-tested and computationally secure 
-                    cipher suite.\\      
-                \textit{Argument:} Mobile and Auth exchange user's personal information and transmitting them over a 
-                                public channel would pose a privacy concern, as well as create new vectors of attack, 
-                                namely social engineering, phishing, and targeted brute-force attacks. The exchanged 
-                                information should remain confidential given that the challenge is used to identify 
-                                an authentication session, and later on an attestation is used to authenticate the user.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account. 
+    \subsection{Privacy and security concerns}
+        \begin{enumerate}[resume]
+                \item User's name, email, public key, and private key MUST be deleted from the Mobile and SHOULD be deleted from the 
+                      Auth once the user finishes the process of deleting their account.\\        
+                \textit{Argument:} This is to protect the privacy of the user and their right to control their personal information, 
+                                   its storing and processing.
 
-                \item User's name, email, public key, and private key MUST be deleted from the Mobile and SHOULD be 
-                    deleted from the Auth.\\        
-                \textit{Argument:} This is to protect the right to the privacy of the user and their right to control 
-                                their personal information.\\
-                \textit{Dependant flows:} Register via email, login, reset credentials, delete account.  
+                \item The communication between all entities MUST rely on a secure channel that provides confidentiality and 
+                      verifies integrity. It is RECOMMENDED to use up-to-date version of Transport Level Security (TLS) protocol 
+                      with a well-tested and computationally secure cipher suite.\\      
+                \textit{Argument:} Entities exchange user's personal information and transmitting them over a 
+                                   public channel would pose a privacy concern, as well as create new vectors of attack, 
+                                   namely social engineering, phishing, and targeted brute-force attacks. Furthermore, 
+                                   the challenge is used to identify an authentication session, and later on an attestation 
+                                   is used to authenticate the user, leading to the possibility of hijacking should the channel
+                                   remain public.                 
         \end{enumerate}
