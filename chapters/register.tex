@@ -6,26 +6,26 @@ has been designed with extensibility in mind, meaning that other types of verifi
 little extra effort.
 
       \subsection{Register via email}
-      The flow of registering an account via email (i.e. using an email verification claim) is shown in 
-      Figure~\ref{fig:registerViaEmail} on page~\pageref{fig:registerViaEmail} and is defined as follows:
+      The flow of registering an account via email is shown in Figure~\ref{fig:registerViaEmail} on 
+      page~\pageref{fig:registerViaEmail} and is defined as follows:
       \begin{enumerate}
-            \item A user MUST provide a valid name and a valid email.
+            \item A user MUST provide a valid email.
             \item When Auth receives a valid registration request, email containing the verification code MUST 
                   be dispatched to the provided email address.
             \item Upon receiving the verification code and entering it into the Mobile, the Mobile MUST provide 
                   a method to generate, store, and retrieve public key and an interface for signing an arbitrary 
                   message with the matching private key.
             \item Mobile MUST authenticate the user locally using a built-in biometry. Upon authenticating, 
-                  the Mobile MUST finish an account creation by submitting a name, email, generated public key, 
+                  the Mobile MUST finish an account creation by submitting an email, generated public key, 
                   and a digital signature of all of the previous parameters, with a REQUIRED addition of the 
                   verification code, to the Auth.
       \end{enumerate}
       \input{diagrams/sequence/registration-via-email.tex}           
       
             \subsubsection{Successful registration}
-            If the registration via email is successful, the Mobile MUST remember user's name, email, public key, and 
+            If the registration via email is successful, the Mobile MUST remember user's email, public key, and 
             have access to the procedure that signs an arbitrary message with the matching private key. Auth MUST 
-            remember user's name, email, and public key.
+            remember user's email, and public key.
 
             \subsubsection{Unsuccessful registration}
             If the registration via email fails for any reason related to the semantics of the protocol, an attempt to
