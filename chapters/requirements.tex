@@ -1,6 +1,6 @@
 \section{Requirements}
 In this section, a list of requirements and arguments for their inclusion is given. Requirements are grouped into 
-semantical units based on the part of the protocol that they extend.
+semantical units based on the part of the protocol that they refer to.
 
     \subsection{Verification codes and challenges}
         \begin{enumerate}
@@ -19,8 +19,8 @@ semantical units based on the part of the protocol that they extend.
             \item Verification code MUST be reset after a several unsuccessful verification code entries.\\        
             \textit{Argument:} This is to reduce a chance of a successful brute-force attack.
 
-            \item A challenge that the Auth generates MUST rely on a cryptographically secure pseudo-random number 
-                  generator (CSPRNG) and MUST NOT be predictable.\\
+            \item A challenge that the Auth generates MUST rely on a cryptographically secure random number 
+                  generator (CSRNG) and MUST NOT be predictable.\\
             \textit{Argument:} If the challenge can be predicted or guessed, an unauthorized party might fetch the
                                attestation or perform an attack from MITM vector of attacks, for instance a relay 
                                attack.
@@ -33,8 +33,8 @@ semantical units based on the part of the protocol that they extend.
     \subsection{Digital signatures}
         \begin{enumerate}[resume]
             \item Mobile MUST NOT expose private key directly.\\
-            \textit{Argument:} Since the digital signature is the basis of authentication, an utmost respect to 
-                               protecting the confidentiality of the private key should be implemented.
+            \textit{Argument:} Since the digital signature is the basis of authentication, protecting the 
+                               confidentiality of the private key is of utmost importance.                               
 
             \item Mobile MUST always require a biometric authentication to allow access to digital signing 
                   capability.\\        
@@ -53,8 +53,8 @@ semantical units based on the part of the protocol that they extend.
                   decline an attestation that was issued over three minutes ago.\\
             \textit{Argument:} Since the attestation proves the holder's identity, an attacker that obtains a valid
                                attestation might pose as the user identified by the attestation. Given that the login
-                               flow is not dependent upon data entry, a three minute time-to-live  (TTL) period is 
-                               gracious enough to let the network exchanges happen.
+                               flow is not dependent upon data entry, a three minute time-to-live (TTL) period is 
+                               considerate enough to let the network exchanges happen.
 
             \item An attestation MUST NOT be continuously reused after the login succeeds.\\
             \textit{Argument:} An attestation serves as an initial proof of identity and a continuous exchange of the

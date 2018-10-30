@@ -3,16 +3,16 @@ In this section a flow for logging in at an independent endpoint using the Auth 
 process of authenticating the user by the Auth is defined. 
 
     \subsection{Flow}
-    The login flow is given in Figure~\ref{fig:login} on page~\pageref{fig:login} and defined as follows:
+    The login flow is given in Figure~\ref{fig:login} on page~\pageref{fig:login} and is defined as follows:
         \begin{enumerate}
-            \item A user MAY try to access an unauthorized resource on the Server via the Browser.
+            \item A user MAY try to access an unauthorized resource on the Server using the Browser.
             \item Server MUST notify the user that they need to authenticate and SHALL refer the Auth they can use 
                   to do so.
             \item Upon receiving the information about the Auth, the Browser MUST fetch an authentication challenge
                   from the Auth. It is REQUIRED for the challenge to be combined with the domain name and
                   displayed as a QR code for the user to scan it with the Mobile.
             \item When the user scans an aforementioned QR code with the Mobile, the Mobile MUST authenticate the 
-                  user locally by using a built-in biometry while disclosing the domain that requires the authentication.
+                  user locally using a built-in biometry while disclosing the domain that requires the authentication.
                   Upon authenticating, the Mobile will sign the challenge, domain name, and user's email. Afterwards, the
                   Mobile MUST send the challenge and user's email alongside the signature to the Auth.
             \item Auth SHOULD notify the Browser that the authentication is successful and that the attestation is
@@ -37,7 +37,7 @@ process of authenticating the user by the Auth is defined.
     and \textit{email}, a \textit{claim} field signifies a type of registration process that the user underwent upon 
     account creation. In the first version of the protocol, only email verification claim is available, but this field 
     was added with future changes in mind. Lastly, the \textit{signature} field contains a digital signature of all of 
-    the other fields, signed by the issuer with his private key that matches his certified public key. 
+    the other fields, signed by the issuer with their private key that matches their certified public key. 
 
     \subsection{Successful login}
     If the login is successful, the Server SHOULD communicate with the Browser in a manner of its implementation. Both 

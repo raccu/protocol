@@ -9,24 +9,24 @@ with the email address they provided. It is assumed that the user is the only pe
 \medskip
 \textbf{Auth}: Central authentication provider that serves as a secure token store (STS) and conforms to 
 the Raccu Auth Provider API Specification. Valid and trusted certificate issued by a certificate authority
-(CA) as a part of public key infrastructure (PKI) for this entity is implied.
+(CA) as a part of PKI for this entity is implied.
 
 \medskip
 \textbf{Mobile}: An implementation of the mobile application that communicates with the corresponding Auth instance 
-conforming to the Raccu Mobile Application Specification. Access to the fingerprint reader and an enabled biometric 
-authentication on the host smartphone is implied.
+conforming to the Raccu Mobile Application Specification. Ability to authenticate the user via a fingerprint scanner
+on the host smartphone is implied.
 
 \medskip
 \textbf{Browser}: An arbitrary web browser in charge of rendering QR codes and dispatching appropriate messages  
-as specified by this specification, Raccu Auth Provider API Specification, and Raccu Client Component Specification.
+as specified by the Raccu Client Component Specification.
 
 \medskip
 \textbf{Attestation}: Digitally signed claim in a form of a token that confirms holder's identity. Issued by 
-Auth in a format defined in this specification and a separate Raccu Auth Provider API Specification.
+Auth in a format defined in this specification.
 
 \medskip
-\textbf{Server}: An end web service or application that consumes an attestation issued by Auth. Authorization service 
-within the Server is assumed. Valid and trusted certificate issued as a part of PKI for this entity is implied.
+\textbf{Server}: An end web service or application that consumes an attestation. Authorization service within the 
+Server is assumed. Valid and trusted certificate issued as a part of PKI for this entity is implied.
 
 \medskip
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", 
