@@ -10,7 +10,7 @@
         \begin{call}{B}{POST /delete {(email)}}{C}{200 OK}\end{call}{B}
         \mess{C}{Send an email {(verification code)}}{A}
         \mess{A}{verification code}{B}
-        \begin{call}{B}{DELETE / {(email, Sign{(email \textbar\textbar verification code)})}}{C}{200 OK}\end{call}{B}
+        \begin{call}{B}{DELETE / {(email, Sign{(email\textbar\textbar verification code)})}}{C}{200 OK}\end{call}{B}
 
     \end{sequencediagram}
     \caption{Delete account protocol flow}
