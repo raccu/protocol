@@ -7,10 +7,10 @@
         \newinst[3]{C}{Auth}{}
         
         \tiny
-        \begin{call}{B}{POST /verify/email {(name, email)}}{C}{200 OK}\end{call}{B}
+        \begin{call}{B}{POST /verify/email {(email)}}{C}{200 OK {(token)}}\end{call}{B}
         \mess{C}{Send an email {(verification code)}}{A}
         \mess{A}{verification code}{B}
-        \begin{call}{B}{POST /register/email {(name, email, PU\textsubscript{k}, Sign{(name \textbar\textbar email \textbar\textbar PU\textsubscript{k} \textbar\textbar verification code)})}}{C}{200 OK}\end{call}{B}
+        \begin{call}{B}{POST /register/email {(token, email, PU\textsubscript{k}, Sign{(token\textbar\textbar email\textbar\textbar PU\textsubscript{k}\textbar\textbar verification code)})}}{C}{200 OK}\end{call}{B}
 
     \end{sequencediagram}
     \caption{Register via email protocol flow}
