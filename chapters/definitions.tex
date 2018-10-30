@@ -1,11 +1,10 @@
 \section{Definitions}
-Throughout the specification a following list of terms is widely used. In this section we define their meaning 
-and what assumptions do we make on them.
+Throughout the specification a following list of terms is widely used. In this section their meaning and assumptions 
+made on them are given in details.
 
 \medskip
 \textbf{Email}: Email client that allows the user to gain read access rights to the inbox associated
-with the email address he/she provided. It is assumed that the user is the only person with the read access 
-to this entity.
+with the email address they provided. It is assumed that the user is the only person with this privilege.
 
 \medskip
 \textbf{Auth}: Central authentication provider that serves as a secure token store (STS) and conforms to 
@@ -13,8 +12,8 @@ the Raccu Auth Provider API Specification. Valid and trusted certificate issued 
 (CA) as a part of public key infrastructure (PKI) for this entity is implied.
 
 \medskip
-\textbf{Mobile}: A mobile application implementation conforming to the Raccu Mobile Application Specification 
-that communicates with the corresponding Auth instance. Access to the fingerprint reader and an enabled biometric 
+\textbf{Mobile}: An implementation of the mobile application that communicates with the corresponding Auth instance 
+conforming to the Raccu Mobile Application Specification. Access to the fingerprint reader and an enabled biometric 
 authentication on the host smartphone is implied.
 
 \medskip
@@ -23,13 +22,11 @@ as specified by this specification, Raccu Auth Provider API Specification, and R
 
 \medskip
 \textbf{Attestation}: Digitally signed claim in a form of a token that confirms holder's identity. Issued by 
-an Auth instance in a format defined in this specification and a separate Raccu Auth Provider API Specification. 
-A secure storing of the attestation by its holder is implied.
+Auth in a format defined in this specification and a separate Raccu Auth Provider API Specification.
 
 \medskip
-\textbf{Server}: An end web service or application that consumes an attestation issued by an Auth instance. 
-Authorization service within the Server is assumed. Valid and trusted certificate issued as a part of PKI 
-for this entity is implied.
+\textbf{Server}: An end web service or application that consumes an attestation issued by Auth. Authorization service 
+within the Server is assumed. Valid and trusted certificate issued as a part of PKI for this entity is implied.
 
 \medskip
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", 
