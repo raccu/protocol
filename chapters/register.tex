@@ -13,8 +13,9 @@ other flows are required to obtain user's name and email address in addition to 
             \item Upon receiving the verification code and entering it into the Mobile, the Mobile MUST provide 
                   a method to generate, store, and retrieve public key and an interface for signing an arbitrary 
                   message with the matching private key.
-            \item Mobile MUST finish an account creation by submitting a name, email, generated public key, and 
-                  a digital signature of all of the previous parameters, with a REQUIRED addition of the 
+            \item Mobile MUST authenticate the user locally by using a built-in biometry. Upon authenticating, 
+                  the Mobile MUST finish an account creation by submitting a name, email, generated public key, 
+                  and a digital signature of all of the previous parameters, with a REQUIRED addition of the 
                   verification code, to the Auth.
       \end{enumerate}  
       \input{diagrams/sequence/registration-via-email.tex}           
