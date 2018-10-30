@@ -39,8 +39,8 @@ In this section a flow for deleting an account of the user is defined.
                 \textit{Argument:} This is to avoid phishing attacks or other illegal attempts to get the user's 
                                    digital signature without his/hers explicit approval.
 
-                \item User's name, email, public and private key MUST be deleted from the Mobile and SHOULD be deleted
-                      from the Auth.\\        
+                \item User's name, email, public key, and private key MUST be deleted from the Mobile and SHOULD be 
+                      deleted from the Auth.\\        
                 \textit{Argument:} This is to protect the right to the privacy of the user and their right to control 
                                    their personal information.
     
@@ -51,3 +51,20 @@ In this section a flow for deleting an account of the user is defined.
                                    public channel would pose a privacy concern, as well as create new vectors of attack, 
                                    namely social engineering, phishing, and targeted brute-force attacks.
         \end{enumerate}
+    
+    \subsection{Successful account deletion}
+    If account deletion is successful, the Mobile MUST delete any record of user's name, email, public key, and 
+    private key. The Auth SHOULD delete any record of user's name, email, public key, and private key.
+
+    \subsection{Unsuccessful account deletion}
+    If account deletion fails for any reason related to the protocol, an attempt to delete an account MUST be discarded. 
+    It is RECOMMENDED to log an attempt in order to screen a source of multiple invalid requests. Any of the following 
+    reasons is considered to be related to the protocol:
+        \begin{itemize}
+            \item An email is not associated with any account.
+            \item Verification code entered into Mobile does not match the expected verification code.
+            \item The signature cannot be verified by the associated public key.
+            \item The signature is invalid.
+        \end{itemize}
+    If account deletion fails for any other reason (e.g. network outage), an appropriate message SHOULD be dispatched or 
+    left to other protocols for handling, should they offer such capability.
