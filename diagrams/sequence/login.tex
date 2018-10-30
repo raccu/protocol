@@ -9,13 +9,14 @@
 
         \tiny
         \begin{call}{B}{GET /protected/resource/1}{D}{401 Unauthorized}\end{call}{C}
-        \begin{call}{B}{GET /auth}{C}{200 OK {(challenge)}}\end{call}{B}
-        \mess{B}{QR{(challenge, domain)}}{A}
-        \begin{call}{A}{POST /attestation {(challenge, email, domain, Sign{(challenge \textbar\textbar email \textbar\textbar domain)})}}{C}{200 OK}\end{call}{A}
-        \mess{C}{Authentication successful}{B}
-        \begin{call}{B}{GET /attestation/\{challenge\}}{C}{200 OK {(attestation)}}\end{call}{B}
+            \begin{sdblock}{Authentication}{}
+                \begin{call}{B}{GET /auth}{C}{200 OK {(challenge)}}\end{call}{B}
+                \mess{B}{QR{(challenge, domain)}}{A}
+                \begin{call}{A}{POST /attestation {(challenge, email, domain, Sign{(challenge \textbar\textbar email \textbar\textbar domain)})}}{C}{200 OK}\end{call}{A}
+                \mess{C}{Authentication successful}{B}
+                \begin{call}{B}{GET /attestation/\{challenge\}}{C}{200 OK {(attestation)}}\end{call}{B}
+            \end{sdblock}        
         \begin{call}{B}{POST /login {(attestation)}}{D}{200 OK {(Custom server-defined authorization token)}}\end{call}{B}
-
     \end{sequencediagram}
     \caption{Login protocol flow}
     \label{fig:login}
