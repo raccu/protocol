@@ -1,13 +1,13 @@
 \section{Register}
 Registration is an act of sharing the proof of identity between the user and Auth instance. The proof of identity
-can be in a spectar of forms, including high confidence national issued documents and low confidence emails and 
+can be in a specter of forms, including high confidence national issued documents and low confidence emails and 
 phone numbers. Even though current version of Raccu protocol defines only email based authentication, the protocol
 has been designed with extensibility in mind, meaning that other types of verification claims can be added if
 needed.
 
       \subsection{Register via email}
       The flow of registering an account via email is shown in Figure~\ref{fig:registerViaEmail} on 
-      page~\pageref{fig:registerViaEmail} and is defined as follows:
+      page~\pageref{fig:registerViaEmail} and successful registration flow is defined as follows:
       \begin{enumerate}
             \item A user MUST provide a valid email.
             \item When Auth receives a valid registration request, email containing the verification code MUST 
@@ -20,22 +20,13 @@ needed.
                   and a digital signature of all of the previous parameters, with a REQUIRED addition of the 
                   verification code, to the Auth.
       \end{enumerate}
-      \input{diagrams/sequence/registration-via-email.tex}           
-      
-            \subsubsection{Successful registration}
-            If the registration via email is successful, the Mobile MUST remember user's email, public key, and 
-            have access to the procedure that signs an arbitrary message with the matching private key. Auth MUST 
-            remember user's email, and public key.
-
-            \subsubsection{Unsuccessful registration}
-            If the registration via email fails for any reason related to the semantics of the protocol, an attempt to
-            register MUST be discarded and all of the related data should be deleted. All of the following reasons are 
-            considered to be a semantic of the protocol:
-            \begin{itemize}
-                  \item Email is already associated with another account.
-                  \item Verification code entered into Mobile does not match the expected verification code.
-                  \item The signature cannot be verified by a given public key.
-                  \item The signature is invalid.
-            \end{itemize}
-            If the registration fails for any other reason (e.g. network outage), an appropriate message SHOULD be
-            dispatched or left to other protocols for handling, should they offer such capability.
+      \input{diagrams/sequence/registration-via-email.tex}       
+      If the registration via email fails for any reason related to the semantics of the protocol, an attempt to
+      register MUST be discarded and all of the related data should be deleted. All of the following reasons are 
+      considered to be a semantic of the protocol:
+      \begin{itemize}
+            \item Email is already associated with another account.
+            \item Verification code entered into Mobile does not match the expected verification code.
+            \item The signature cannot be verified by a given public key.
+            \item The signature is invalid.
+      \end{itemize}

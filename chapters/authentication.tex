@@ -1,32 +1,32 @@
 \section{Authentication}
 In this section, a flow for authenticating the user by Auth and its use in logging in at an independent endpoint
 is defined.
+\medskip
 
-    \subsection{Flow}
-    The authentication flow is given in Figure~\ref{fig:authentication} on page~\pageref{fig:authentication} and 
-    successful authentication is defined as follows:
-        \begin{enumerate}
-            \item Browser MUST fetch an authentication challenge from the Auth. It is REQUIRED for the challenge 
-                  to be combined with the domain name and displayed as a QR code for the user to scan it with 
-                  the Mobile.
-            \item When the user scans an aforementioned QR code with the Mobile, the Mobile MUST authenticate the 
-                  user locally using a built-in biometry while disclosing the domain that requires the authentication.
-                  Upon authenticating, the Mobile will send the challenge, domain name, and user's email alongside the
-                  signature of those parameters to the Auth.
-            \item Auth SHOULD notify the Browser that the authentication is successful and that the attestation is
-                  ready.
-            \item Browser MUST request the attestation from the Auth by providing a challenge that the Auth issued 
-                  as a reference to the authentication session.
-        \end{enumerate}
-        \input{diagrams/sequence/authentication.tex}
-    If the login fails for any reason related to the authentication as described by the protocol, an attempt to 
-    authenticate MUST be discarded. All of the following reasons are considered to be an authentication error:
-        \begin{itemize}
-            \item An email is not associated with any account.
-            \item Challenge does not exist.
-            \item The signature cannot be verified by an associated public key.
-            \item The signature is invalid.
-        \end{itemize}
+The authentication flow is given in Figure~\ref{fig:authentication} on page~\pageref{fig:authentication} and 
+successful authentication is defined as follows:
+    \begin{enumerate}
+        \item Browser MUST fetch an authentication challenge from the Auth. It is REQUIRED for the challenge 
+                to be combined with the domain name and displayed as a QR code for the user to scan it with 
+                the Mobile.
+        \item When the user scans an aforementioned QR code with the Mobile, the Mobile MUST authenticate the 
+                user locally using a built-in biometry while disclosing the domain that requires the authentication.
+                Upon authenticating, the Mobile will send the challenge, domain name, and user's email alongside the
+                signature of those parameters to the Auth.
+        \item Auth SHOULD notify the Browser that the authentication is successful and that the attestation is
+                ready.
+        \item Browser MUST request the attestation from the Auth by providing a challenge that the Auth issued 
+                as a reference to the authentication session.
+    \end{enumerate}
+    \input{diagrams/sequence/authentication.tex}
+If the login fails for any reason related to the authentication as described by the protocol, an attempt to 
+authenticate MUST be discarded. All of the following reasons are considered to be an authentication error:
+    \begin{itemize}
+        \item An email is not associated with any account.
+        \item Challenge does not exist.
+        \item The signature cannot be verified by an associated public key.
+        \item The signature is invalid.
+    \end{itemize}
 
     \subsection{Attestation structure}
     An attestation that Auth issues to the user upon authenticating has a structure defined in a Figure~\ref{fig:attestation}
