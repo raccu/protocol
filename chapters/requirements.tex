@@ -5,7 +5,9 @@ semantical units based on the part of the protocol that they refer to.
     \subsection{Verification codes, challenges and tokens}
         \begin{enumerate}
             \item Verification code MUST be at least six characters long, contain a character space of at 
-                  least ten characters, and be short lived while it SHALL NOT be predictable.\\    
+                  least ten characters, and be \textit{short lived} while it SHALL NOT be predictable. It is 
+                  left up to the implementer to define \textit{short lived}, but it is RECOMMENDED to decline 
+                  verification codes issued over five minutes ago.\\    
             \textit{Argument:} Verification code should posses a certain entropy and a level of randomness, 
                                just as well as a limited lifetime in order to reduce  the likelihood of a 
                                successful brute-force attack and Man-in-the-Middle (MITM) attack.
