@@ -6,12 +6,13 @@ Delete account flow is given in Figure~\ref{fig:deleteAccount} on page~\pageref{
 as follows:
     \begin{enumerate}
         \item Mobile MUST request a verification code from the Auth by submitting the email address of the user
-                which is trying to delete the account.
+              which is trying to delete the account and a token MUST be returned to the Mobile.
         \item Upon receiving a request to delete an account, the Auth MUST dispatch an email with the verification
-                code to the Email.
+              code to the Email.
         \item When the user enters verification code into the Mobile, the Mobile MUST authenticate the user locally 
-                using a built-in biometry. Upon authenticating, the Mobile MUST send user's email and a signature 
-                of the email and verification code to the Auth to complete the process of deleting the account.
+              using a built-in biometry. Upon authenticating, the Mobile MUST send the token, user's email and a 
+              signature of the token, user's email and verification code to the Auth to complete the process of 
+              deleting the account.
     \end{enumerate}
     \input{diagrams/sequence/delete-account.tex}
 If the account deletion is successful, the Mobile MUST delete any record of user's name, email, public key, and 
@@ -22,6 +23,8 @@ If the account deletion fails for any reason related to the protocol, an attempt
 discarded. All of the following reasons are considered to be related to the protocol:
     \begin{itemize}
         \item An email is not associated with any account.
+        \item Token does not exist.
+        \item Token is not associated with a given email.
         \item Verification code entered into Mobile does not match the expected verification code.
         \item The signature cannot be verified by the associated public key.
         \item The signature is invalid.
