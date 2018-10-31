@@ -2,7 +2,7 @@
 In this section, a list of requirements and arguments for their inclusion is given. Requirements are grouped into 
 semantical units based on the part of the protocol that they refer to.
 
-    \subsection{Verification codes, challenges, and tokens}
+    \subsection{Verification codes}
         \begin{enumerate}
             \item Verification code MUST be at least six characters long, contain a character space of at 
                   least ten characters, and be \textit{short lived} while it SHALL NOT be predictable. It is 
@@ -20,7 +20,10 @@ semantical units based on the part of the protocol that they refer to.
 
             \item Verification code MUST be reset after a several unsuccessful verification code entries.\\        
             \textit{Argument:} This is to reduce a chance of a successful brute-force attack.
+        \end{enumerate}
 
+    \subsection{Challenges and tokens}
+        \begin{enumerate}[resume]
             \item A challenge that the Auth generates MUST rely on a cryptographically secure random number 
                   generator (CSRNG) and MUST NOT be predictable.\\
             \textit{Argument:} If the challenge can be predicted or guessed, an unauthorized party might fetch the
