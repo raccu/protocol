@@ -1,8 +1,8 @@
 \section{Register}
-Registration is an act of sharing the proof of identity between the user and Auth instance. The proof of identity
-can be in a specter of forms, including high confidence national issued documents and low confidence emails and 
-phone numbers. Even though current version of Raccu protocol defines only email based authentication, the protocol
-has been designed with extensibility in mind, meaning that other types of verification claims can be added if
+Registration is an act of sharing the proof of identity between the user and Auth. The proof of identity
+can be in a specter of forms, including high confidence government issued documents and low confidence emails and 
+phone numbers. Even though current version of Raccu protocol defines only email-based authentication, the protocol
+has been designed with extensibility in mind, meaning that other types of verification claims can be added, if
 needed.
 
       \subsection{Register via email}
@@ -11,12 +11,12 @@ needed.
       \begin{enumerate}
             \item A user MUST provide a valid email.
             \item When Auth receives a valid registration request, email containing the verification code MUST 
-                  be dispatched to the provided email address.
+                  be dispatched to the Email and a token MUST be returned to the Mobile.
             \item Upon receiving the verification code and entering it into the Mobile, the Mobile MUST provide 
                   a method to generate, store, and retrieve public key and an interface for signing an arbitrary 
                   message with the matching private key.
             \item Mobile MUST authenticate the user locally using a built-in biometry. Upon authenticating, 
-                  the Mobile MUST finish an account creation by submitting an email, generated public key, 
+                  the Mobile MUST finish an account creation by submitting a token, email, generated public key, 
                   and a digital signature of all of the previous parameters, with a REQUIRED addition of the 
                   verification code, to the Auth.
       \end{enumerate}
@@ -26,6 +26,8 @@ needed.
       considered to be a semantic of the protocol:
       \begin{itemize}
             \item Email is already associated with another account.
+            \item Token does not exist.
+            \item Token is not associated with a given email.
             \item Verification code entered into Mobile does not match the expected verification code.
             \item The signature cannot be verified by a given public key.
             \item The signature is invalid.
