@@ -33,9 +33,7 @@ semantical units based on the part of the protocol that they refer to.
 
             \item A token MUST NOT be predictable, SHOULD have a limited lifetime and MUST be a universally unique
                   identifier (UUID).\\
-            \textit{Argument:} Token provides context to incoming requests that are continuing the flow. This makes 
-                               it hard for an attacker to invalidate users' session by sending invalid requests, thus 
-                               successfully completing a denial of service (DOS) attack.
+            \textit{Argument:} This is to reduce the chances of a targeted denial of service (DOS) attack.
         \end{enumerate}
 
     \subsection{Digital signatures}
