@@ -3,8 +3,8 @@ In this section, a flow for authenticating the user by Auth and its use in loggi
 is defined.
 \medskip
 
-The authentication flow is given in Figure~\ref{fig:authentication} on page~\pageref{fig:authentication} and 
-successful authentication is defined as follows:
+The authentication flow is given in Figure~\ref{fig:authentication} and successful authentication is defined as 
+follows:
     \begin{enumerate}
         \item Browser MUST fetch an authentication challenge from the Auth. It is REQUIRED for the challenge 
                 to be combined with the domain name and displayed as a QR code for the user to scan it with 
@@ -19,7 +19,7 @@ successful authentication is defined as follows:
                 as a reference to the authentication session.
     \end{enumerate}
     \input{diagrams/sequence/authentication.tex}
-If the login fails for any reason related to the authentication as described by the protocol, an attempt to 
+If the authentication fails for any reason related to the authentication as described by the protocol, an attempt to 
 authenticate MUST be discarded. All of the following reasons are considered to be an authentication error:
     \begin{itemize}
         \item An email is not associated with any account.
@@ -29,8 +29,7 @@ authenticate MUST be discarded. All of the following reasons are considered to b
     \end{itemize}
 
     \subsection{Attestation structure}
-    An attestation that Auth issues to the user upon authenticating has a structure defined in a Figure~\ref{fig:attestation}
-    on page~\pageref{fig:attestation}.
+    An attestation that Auth issues to the user upon authenticating has a structure defined in a Figure~\ref{fig:attestation}.
     \input{diagrams/attestation.tex}
     Within the structure, a \textit{version} represents a version of the protocol under which an attestation was issued, 
     while \textit{iat} stands for \textit{issued at} and represents a moment at which an attestation was issued. The 
@@ -43,7 +42,7 @@ authenticate MUST be discarded. All of the following reasons are considered to b
 
     \subsection{Login based on the authentication flow}
     When a user tries to connect to the Server utilizing the Raccu protocol, a flow shown on the Figure~\ref{fig:login} 
-    on page~\pageref{fig:login} is RECOMMENDED.
+    is RECOMMENDED.
     \input{diagrams/sequence/login.tex}
     If the login is successful, the Server SHOULD communicate with the Browser in a manner of its implementation. Both 
     authentication and authorization from that point forward to the session expiry, as defined by the Server, MUST be 

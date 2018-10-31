@@ -2,16 +2,15 @@
 In this section, a flow for deleting an account by the user is defined. 
 \medskip
 
-Delete account flow is given in Figure~\ref{fig:deleteAccount} on page~\pageref{fig:deleteAccount} and is defined 
-as follows:
+Delete account flow is given in Figure~\ref{fig:deleteAccount} and a successful flow is defined as follows:
     \begin{enumerate}
         \item Mobile MUST request a verification code from the Auth by submitting the email address of the user
               which is trying to delete the account and a token MUST be returned to the Mobile.
         \item Upon receiving a request to delete an account, the Auth MUST dispatch an email with the verification
               code to the Email.
         \item When the user enters verification code into the Mobile, the Mobile MUST authenticate the user locally 
-              using a built-in biometry. Upon authenticating, the Mobile MUST send the token, user's email and a 
-              signature of the token, user's email and verification code to the Auth to complete the process of 
+              using a built-in biometry. Upon authenticating, the Mobile MUST send the token, user's email, and a 
+              signature of the token, user's email, and verification code to the Auth to complete the process of 
               deleting the account.
     \end{enumerate}
     \input{diagrams/sequence/delete-account.tex}

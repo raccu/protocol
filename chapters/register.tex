@@ -1,13 +1,11 @@
 \section{Register}
-Registration is an act of sharing the proof of identity between the user and Auth. The proof of identity
-can be in a specter of forms, including high confidence government issued documents and low confidence emails and 
-phone numbers. Even though current version of Raccu protocol defines only email-based authentication, the protocol
-has been designed with extensibility in mind, meaning that other types of verification claims can be added, if
-needed.
+Registration is an act of sharing the proof of identity between the user and the Auth. Even though the current 
+version of the protocol defines only email-based authentication, the protocol has been designed with 
+extensibility in mind, meaning that other types of verification claims can be added, if needed.
 
       \subsection{Register via email}
-      The flow of registering an account via email is shown in Figure~\ref{fig:registerViaEmail} on 
-      page~\pageref{fig:registerViaEmail} and successful registration flow is defined as follows:
+      The flow of registering an account via email is shown in Figure~\ref{fig:registerViaEmail} and successful 
+      registration flow is defined as follows:
       \begin{enumerate}
             \item A user MUST provide a valid email.
             \item When Auth receives a valid registration request, email containing the verification code MUST 
