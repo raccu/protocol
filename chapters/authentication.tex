@@ -35,11 +35,11 @@ authenticate MUST be discarded. All of the following reasons are considered to b
     Within the structure, a \textit{version} represents a version of the protocol under which an attestation was issued, 
     while \textit{iat} stands for \textit{issued at} and represents a moment at which an attestation was issued. The 
     \textit{domain} contains a domain name of the web service or application that requested the authentication, while 
-    \textit{issuer} contains a domain name of the Auth instance. Inside the user information, besides the \textit{name}
-    and \textit{email}, a \textit{claim} field signifies a type of registration process that the user underwent upon 
-    account creation. In the first version of the protocol, only email verification claim is available, but this field 
-    was added with future changes in mind. Lastly, the \textit{signature} field contains a digital signature of all of 
-    the other fields, signed by the issuer with their private key that matches their certified public key. 
+    \textit{issuer} contains a domain name of the Auth instance. When it comes to the user information, the \textit{email}
+    field contains the user's email and a \textit{claim} field signifies a type of registration process that the user 
+    underwent upon account creation. In the first version of the protocol, only email verification claim is available, but 
+    this field was added with future changes in mind. Lastly, the \textit{signature} field contains a digital signature of 
+    all of the other fields, signed by the issuer with their private key that matches their certified public key. 
 
     \subsection{Login based on the authentication flow}
     When a user tries to connect to the Server utilizing the Raccu protocol, a flow shown on the Figure~\ref{fig:login} 
