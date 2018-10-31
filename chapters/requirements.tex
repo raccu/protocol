@@ -2,7 +2,7 @@
 In this section, a list of requirements and arguments for their inclusion is given. Requirements are grouped into 
 semantical units based on the part of the protocol that they refer to.
 
-    \subsection{Verification codes and challenges}
+    \subsection{Verification codes, challenges and tokens}
         \begin{enumerate}
             \item Verification code MUST be at least six characters long, contain a character space of at 
                   least ten characters, and be short lived while it SHALL NOT be predictable.\\    
@@ -28,6 +28,12 @@ semantical units based on the part of the protocol that they refer to.
             \item A challenge SHALL NOT be reused.\\
             \textit{Argument:} If the challenge is reused, the system becomes susceptible to the replay attack. 
                                Due to that, the challenge should be viewed as a nonce.
+
+            \item A token MUST NOT be predictible, SHOULD have limited lifetime and MUST be universally unique
+                  identifier (UUID).\\
+            \textit{Argument:} Token provides context to incoming requests that are continuing the flow. This makes 
+                               it hard for an attacker to invalidate users session by sending invalid requests, thus 
+                               successfully completing a denial of service (DOS) attack.
         \end{enumerate}
 
     \subsection{Digital signatures}
