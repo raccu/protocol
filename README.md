@@ -5,27 +5,27 @@
 **Date:** October 31, 2018
 
 ## Contents
-1. Introduction   
-1.1. Background   
-1.2. Goals   
-1.3. Contributing   
-1.4. Disclaimer
-2. Definitions
-3. Register   
-3.1. Register via email   
-4. Authentication   
-4.1. Attestation structure   
-4.2. Login based on the authentication flow   
-5. Reset credentials
-6. Delete account
-7. Requirements  
-7.1. Verification codes   
-7.2. Challenge and tokens   
-7.3. Digital signatures   
-7.4. Attestations   
-7.5. Infrastracture concerns    
-8. List of figures   
-9. Abbreviations
+1. [Introduction](#1.-Introduction)   
+1.1. [Background](#1.1.-Background)   
+1.2. [Goals](#1.2.-Goals)   
+1.3. [Contributing](#1.3.-Contributing)   
+1.4. [Disclaimer](#1.4.-Disclaimer)
+2. [Definitions](#2.-Definitions)
+3. [Register](#3.-Register)   
+3.1. [Register via email](#3.1.-Register-via-email)   
+4. [Authentication](#4.-Authentication)   
+4.1. [Attestation structure](#4.1.-Attestation-structure)   
+4.2. [Login based on the authentication flow](#4.2.-Login-based-on-the-authentication-flow)   
+5. [Reset credentials](#5.-Reset-credentials)
+6. [Delete account](#6.-Delete-account)
+7. [Requirements](#7.-Requirements)  
+7.1. [Verification codes](#7.1.-Verification-codes)   
+7.2. [Challenge and tokens](#7.2.-Challenge-and-tokens)   
+7.3. [Digital signatures](#7.3.-Digital-signatures)  
+7.4. [Attestations](#7.4.-Attestations)  
+7.5. [Infrastructure concerns](#7.5.-Infrastructure-concerns)     
+8. [List of figures](#8.-List-of-figures)   
+9. [Abbreviations](#9.-Abbreviations)
 
 ## 1. Introduction
 This document provides a formal specification of the Raccu protocol. All readers are assumed to have working knowledge in cryptography and computer networking. As this is a high-level overview, implementation details are omitted intentionally.
