@@ -15,12 +15,12 @@ extensibility in mind, meaning that other types of verification claims can be ad
                   message with the matching private key.
             \item Mobile MUST authenticate the user locally using a built-in biometry. Upon authenticating, 
                   the Mobile MUST finish an account creation by submitting a token, email, generated public key, 
-                  and a digital signature of all of the previous parameters, with a REQUIRED addition of the 
+                  and a digital signature of all the previous parameters, with a REQUIRED addition of the 
                   verification code, to the Auth.
       \end{enumerate}
       \input{diagrams/sequence/registration-via-email.tex}       
       If the registration via email fails for any reason related to the semantics of the protocol, an attempt to
-      register MUST be discarded and all of the related data should be deleted. All of the following reasons are 
+      register MUST be discarded and all the related data should be deleted. All the following reasons are 
       considered to be a semantic of the protocol:
       \begin{itemize}
             \item Email is already associated with another account.

@@ -20,7 +20,7 @@ follows:
     \end{enumerate}
     \input{diagrams/sequence/authentication.tex}
 If the authentication fails for any reason related to the authentication as described by the protocol, an attempt to 
-authenticate MUST be discarded. All of the following reasons are considered to be an authentication error:
+authenticate MUST be discarded. All the following reasons are considered to be an authentication error:
     \begin{itemize}
         \item An email is not associated with any account.
         \item Challenge does not exist.
@@ -38,7 +38,7 @@ authenticate MUST be discarded. All of the following reasons are considered to b
     field contains the user's email and a \textit{claim} field signifies a type of registration process that the user 
     underwent upon account creation. In the first version of the protocol, only email verification claim is available, but 
     this field was added with future changes in mind. Lastly, the \textit{signature} field contains a digital signature of 
-    all of the other fields, signed by the issuer with their private key that matches their certified public key. 
+    all the other fields, signed by the issuer with their private key that matches their certified public key. 
 
     \subsection{Login based on the authentication flow}
     When a user tries to connect to the Server utilizing the Raccu protocol, a flow shown on the Figure~\ref{fig:login} 
