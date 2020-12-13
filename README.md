@@ -97,7 +97,9 @@ of all the previous parameters, with a REQUIRED addition of the
 verification code, to the Auth.
 
 ![Register via email protocol flow](./.images/register-via-email.png)
-Figure 1 Register via email protocol flow.
+<p align="center">   
+Figure 1: Register via email protocol flow.
+</p>
 
 If the registration via email fails for any reason related to the semantics of the protocol, an attempt to register MUST be discarded and all the related data should be deleted. All the following reasons are considered to be a semantic of the protocol:
 - Email is already associated with another account.
@@ -117,7 +119,9 @@ The authentication flow is given in Figure 2 and successful authentication is de
 4. Browser MUST request the attestation from the Auth by providing a challenge that the Auth issued as a reference to the authentication session.
 
 ![Authentication protocol flow](./.images/authentication.png)
-Figure 2 Authentication protocol flow.
+<p align="center">   
+Figure 2: Authentication protocol flow.
+</p>
 
 If the authentication fails for any reason related to the authentication as described by the protocol, an attempt to authenticate MUST be discarded.
 
@@ -131,7 +135,9 @@ All the following reasons are considered to be an authentication error:
 An attestation that Auth issues to the user upon authenticating has a structure defined in a Figure 3.
 
 ![Structure of an attestation](./.images/attestation.png)
-Figure 3 Structure of an attestation.
+<p align="center">   
+Figure 3: Structure of an attestation.
+</p>
 
 Within the structure, a _version_ represents a version of the protocol under which an attestation was issued, while _iat_ stands for _issued at_ and represents a moment at which an attestation was issued. The _domain_ contains a domain name of the web service or application that requested the authentication, while _issuer_ contains a domain name of the Auth instance. When it comes to the user information, the _email_ field contains the user’s email and a _claim_ field signifies a type of registration process that the user underwent upon account creation. In the first version of the protocol, only email verification claim is available, but this field was added with future changes in mind. Lastly, the _signature_ field contains a digital signature of all the other fields, signed by the issuer with their private key that matches their certified public key.
 
@@ -139,7 +145,9 @@ Within the structure, a _version_ represents a version of the protocol under whi
 When a user tries to connect to the Server utilizing the Raccu protocol, a flow shown on the Figure 4 is RECOMMENDED.
 
 ![Login protocol flow](./.images/login.png)
-Figure 4 Login protocol flow.
+<p align="center">   
+Figure 4: Login protocol flow.
+</p>
 
 If the login is successful, the Server SHOULD communicate with the Browser in a manner of its implementation. Both authentication and authorization from that point forward to the session expiry, as defined by the Server, MUST be within the Server’s scope. The attestation used to initially authenticate the user MUST be deleted by both the Browser and the Server.
 
@@ -153,7 +161,9 @@ The reset credentials flow is given in Figure 5 and a successful flow is defined
 4. Mobile MUST authenticate the user locally using a built-in biometry. Upon authenticating, Mobile MUST send the token, user’s email, newly generated public key, and a digital signature of all the previous parameters, with a REQUIRED addition of the verification code, to the Auth to finish the credentials reset.
 
 ![Reset credentials protocol flow](./.images/reset-credentials.png)
-Figure 5 Reset credentials protocol flow.
+<p align="center">   
+Figure 5: Reset credentials protocol flow.
+</p>
 
 If the credentials reset fails for any reason related to the protocol, an attempt to reset credentials MUST be discarded. All the following reasons are considered to be related to the protocol:
 
@@ -173,7 +183,9 @@ Delete account flow is given in Figure 6 and a successful flow is defined as fol
 3. When the user enters verification code into the Mobile, the Mobile MUST authenticate the user locally using a built-in biometry. Upon authenticating, the Mobile MUST send the token, user’s email, and a signature of the token, user’s email, and verification code to the Auth to complete the process of deleting the account.
 
 ![Delete account protocol flow](./.images/delete-account.png)
-Figure 6 Delete account protocol flow.
+<p align="center">   
+Figure 6: Delete account protocol flow.
+</p>
 
 If the account deletion is successful, the Mobile MUST delete any record of user’s email, public key, and private key. The Auth SHOULD delete any record of user’s email, public key, and private key.
 
