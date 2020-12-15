@@ -60,8 +60,7 @@ and trusted certificate issued by a certificate authority (CA) as a part of PKI
 for this entity is implied.
 
 **Mobile**: An implementation of the mobile application that communicates
-with the corresponding Auth instance conforming to the Raccu Mobile Ap-
-plication Specification. Ability to authenticate the user via a fingerprint
+with the corresponding Auth instance conforming to the Raccu Mobile Application Specification. Ability to authenticate the user via a fingerprint
 scanner on the host smartphone is implied.
 
 **Browser**: An arbitrary web browser in charge of rendering quick response
@@ -72,8 +71,7 @@ Client Component Specification.
 holder’s identity. Issued by Auth in a format defined in this specification.
 
 **Server**: An end web service or application that consumes an attestation.
-Authorization service within the Server is assumed. Valid and trusted cer-
-tificate issued as a part of PKI for this entity is implied.
+Authorization service within the Server is assumed. Valid and trusted certificate issued as a part of PKI for this entity is implied.
 
 The keywords ”MUST”, ”MUST NOT”, ”REQUIRED”, ”SHALL”, ”SHALL NOT”, ”SHOULD”, ”SHOULD NOT”, ”RECOMMENDED”, ”NOT RECOMMENDED”, ”MAY”, and ”OPTIONAL” in this document are to be interpreted as described in RFC 2119 and RFC 8174 when, and only when, they appear in all capitals, as shown here.
 
